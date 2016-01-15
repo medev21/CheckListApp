@@ -12,5 +12,8 @@ body
       div.navbar-header
         = link_to 'Checklist', root_path, class: 'navbar-brand'
 
-      
+  
+  p.notice= notice
+  p.alert= alert
+
   = yield
