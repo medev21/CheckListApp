@@ -1,5 +1,2 @@
-h1 This is the index view!
-
 - @items.each do |item|
-  h2= item.title
-  p= item.description
+  h2= link_to item.title, item_path(item)
