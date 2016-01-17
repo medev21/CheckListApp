@@ -1,9 +1,9 @@
 class ItemsController < ApplicationController
-  before_action :find_item, only: [:show, :edit, :update, :destroy]
+  before_action :find_item, only: [:show, :edit, :update, :destroy, :complete]
 
   def index
     # @items = Item.all.order('created_at DESC')
-    
+
     # displays user items if user is logged in
     if user_signed_in?
       @items = Item.where(:user_id => current_user.id).order('created_at DESC')
@@ -42,6 +42,13 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
+    redirect_to root_path
+  end
+
+  def complete
+    # this method update the completed_at attr with time now
+    # after user checks the box and redirects to the index page
+    @item.update_attribute(:completed_at, Time.now)
     redirect_to root_path
   end
 

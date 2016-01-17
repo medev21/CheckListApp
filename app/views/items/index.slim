@@ -2,6 +2,8 @@
 
   - @items.each do |item|
     h2= link_to item.title, item_path(item)
+    = link_to "Mark as complete", complete_item_path(item), method: :patch, class: 'btn btn-primary btn-space'
+    = link_to "Delete", item, method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-primary btn-space'
 
 - else
   = render 'layouts/front_page'
