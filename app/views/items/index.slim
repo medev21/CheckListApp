@@ -1,2 +1,7 @@
-- @items.each do |item|
-  h2= link_to item.title, item_path(item)
+- if user_signed_in? 
+
+  - @items.each do |item|
+    h2= link_to item.title, item_path(item)
+
+- else
+  = render 'layouts/front_page'
